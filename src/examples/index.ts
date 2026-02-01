@@ -1,14 +1,12 @@
-// Definir la interfaz para los ejemplos
 export interface Ejemplo {
   nombre: string;
   codigo: string;
   descripcion?: string;
 }
 
-// Array con todos los ejemplos (hardcodeados)
 export const ejemplosCodigo: Ejemplo[] = [
   {
-    nombre: 'SEL - Sistema de Ecuaciones Lineales',
+    nombre: "SEL - Sistema de Ecuaciones Lineales",
     codigo: `program SEL;
 	def A:matriz[2][3];
 	x:matriz[2][1];
@@ -28,7 +26,7 @@ export const ejemplosCodigo: Ejemplo[] = [
 	n:=2;
 	i := 1;
 	while ( ? i <= (n - 1) ? ) {
-		if ( ? A[i][i] == 0 ? ) { 
+		if ( ? A[i][i] == 0 ? ) {
 			k := i + 1 ;
 			pivote:= 0;
 			while ( ? k <= n ? && ? pivote == 0 ? ) {
@@ -40,15 +38,15 @@ export const ejemplosCodigo: Ejemplo[] = [
 						A[k][j] := temp ;
 						j := j + 1;
 					};
-				pivote:=1;	
-					
+				pivote:=1;
+
 				};
 				k := k + 1;
-			};	
-		
+			};
+
 		};
 		k := i + 1 ;
-		while ( ? k <= n ?) { 
+		while ( ? k <= n ?) {
 			factor := A[k][i] / A[i][i];
 			j:=i;
 			while ( ? j <= (n + 1) ? ) {
@@ -68,7 +66,7 @@ export const ejemplosCodigo: Ejemplo[] = [
 		while ( ? j <= n ? ) {
 			suma := suma + (A[i][j] * x[j][1]);
 			j:=j + 1 ;
-		
+
 		};
 		if (? A[i][i] == 0 ? ) {
 			escribir('SISTEMA SIN SOLUCION O CON INFINITAS SOLUCIONES');
@@ -85,16 +83,17 @@ export const ejemplosCodigo: Ejemplo[] = [
 	};
 }
 `,
-    descripcion: 'Implementación del método de eliminación gaussiana para resolver sistemas de ecuaciones lineales'
+    descripcion:
+      "Implementación del método de eliminación gaussiana para resolver sistemas de ecuaciones lineales",
   },
   {
-    nombre: 'Programa de Presentación',
+    nombre: "Programa de Presentación",
     codigo: `program presentacion;
 	def A:matriz[3][2];B:matriz[3][2];i:real;j:real;sum:real;aux:real;
 {
 	A := [[3,4],[1,2],[4,7]];
 
-	i := 1;	
+	i := 1;
 
 	while ( ? i <= filas(A) ?) {
 		j:=1;
@@ -113,12 +112,12 @@ export const ejemplosCodigo: Ejemplo[] = [
 	};
 
 	escribir(B);
-	
+
 }`,
-    descripcion: 'Ejemplo básico de manipulación de matrices y bucles'
+    descripcion: "Ejemplo básico de manipulación de matrices y bucles",
   },
   {
-    nombre: 'Normalización',
+    nombre: "Normalización",
     codigo: `program Normalizacion;
 	def A:matriz[3][2];i:real;j:real;fila:real;columna:real;min:real;max:real;rango:real;aux:real;
 
@@ -128,24 +127,24 @@ export const ejemplosCodigo: Ejemplo[] = [
 
 	A := [[5,1],[5,3],[5,7]];
 	j:=1;
-	
+
 	while ( ? j <= columna ? ) {
 		min := A[1][j];
 		max := A[1][j];
-		
+
 		i:=2;
-		
+
 		while ( ? i <= fila ? ) {
 			if ( ? A[i][j] < min ? ) {
 				min:= A[i][j];
 			};
-			
+
 			if ( ? A[i][j] > max ? ) {
 				max := A[i][j];
 			};
-			
+
 			i := (i + 1);
-			
+
 		};
 		rango := (max - min);
 		if ( ? rango == 0 ? ) {
@@ -159,21 +158,21 @@ export const ejemplosCodigo: Ejemplo[] = [
 			i := (i + 1);
 		};
 		j := (j + 1);
-	
+
 	};
 
 	escribir(A);
-	
+
 
 }`,
-    descripcion: 'Proceso de normalización de datos'
+    descripcion: "Proceso de normalización de datos",
   },
   {
-    nombre: 'Selección',
+    nombre: "Selección",
     codigo: `program seleccion;
 	def A:matriz[1][6];i:real;j:real;temp:real;
 {
-	
+
 	A := [[3,1,-4,-55.55,3]];
 
 	i:=1;
@@ -196,25 +195,25 @@ export const ejemplosCodigo: Ejemplo[] = [
 	};
 	escribir(A);
 }`,
-    descripcion: 'Algoritmo de ordenamiento por selección'
+    descripcion: "Algoritmo de ordenamiento por selección",
   },
   {
-    nombre: 'Test Bucle Infinito',
+    nombre: "Test Bucle Infinito",
     codigo: `program test;
 def
   x: real;
   i: real;
 {
   x := 5;
-  i := 0;
-  while (? i < 10 ?) {
+  i := 10;
+  while (? i > 1 ?) {
     i := i + 1;
     x := x * 2;
   };
   escribir('Valor final de x: ', x);
 }`,
-    descripcion: 'Ejemplo para probar el control de bucles infinitos'
-  }
+    descripcion: "Ejemplo para probar el control de bucles infinitos",
+  },
 ];
 
-export default ejemplosCodigo; 
+export default ejemplosCodigo;

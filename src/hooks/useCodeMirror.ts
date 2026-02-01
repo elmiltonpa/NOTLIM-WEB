@@ -1,8 +1,7 @@
-// useCodeMirror.ts
 import { useEffect, useRef } from "react";
-import { EditorView, basicSetup } from "codemirror";
+import { EditorView, keymap } from "@codemirror/view";
+import { basicSetup } from "codemirror";
 import { indentWithTab } from "@codemirror/commands";
-import { keymap } from "@codemirror/view";
 import { autocompletion, CompletionContext } from "@codemirror/autocomplete";
 
 const pokerLanguageCompletions = (context: CompletionContext) => {
@@ -23,11 +22,10 @@ const pokerLanguageCompletions = (context: CompletionContext) => {
       { label: "real", type: "function" },
       { label: "columnas", type: "function" },
       { label: "filas", type: "function" },
-      { label: "tras", type: "function" }
-    ]
+      { label: "tras", type: "function" },
+    ],
   };
 };
-
 
 export function useCodeMirror(props: {
   value: string;
@@ -36,10 +34,9 @@ export function useCodeMirror(props: {
   const ref = useRef<HTMLDivElement>(null);
   const editorView = useRef<EditorView | null>(null);
 
-
   useEffect(() => {
     if (!ref.current) return;
-  
+
     const view = new EditorView({
       parent: ref.current,
       doc: props.value,
@@ -47,24 +44,24 @@ export function useCodeMirror(props: {
         basicSetup,
         keymap.of([indentWithTab]),
         autocompletion({ override: [pokerLanguageCompletions] }),
-        EditorView.updateListener.of(update => {
+        EditorView.updateListener.of((update) => {
           if (update.docChanged) {
             props.onChange(update.state.doc.toString());
           }
         }),
       ],
     });
-  
+
     editorView.current = view;
-  
+
     return () => view.destroy();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const view = editorView.current;
     if (!view) return;
-  
+
     const currentValue = view.state.doc.toString();
     if (props.value !== currentValue) {
       view.dispatch({
@@ -72,7 +69,7 @@ export function useCodeMirror(props: {
           from: 0,
           to: currentValue.length,
           insert: props.value,
-        }
+        },
       });
     }
   }, [props.value]);

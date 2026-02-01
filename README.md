@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# FRONT-NOTLIM 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una interfaz web moderna y potente para el intérprete de lenguaje personalizado, diseñada para escribir, validar y ejecutar código de forma interactiva.
 
-Currently, two official plugins are available:
+Este proyecto nace como la evolución visual y funcional del intérprete desarrollado en [PROYECTO-SINTAXIS](https://github.com/elmiltonpa/PROYECTO-SINTAXIS).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Características
 
-## Expanding the ESLint configuration
+- **Editor Inteligente:** Implementación de CodeMirror 6 con:
+  - Resaltado de sintaxis personalizado.
+  - Autocompletado de palabras clave del lenguaje (`program`, `while`, `if`, `leer`, `escribir`, etc.).
+  - Soporte para indentación con tabulación.
+- **Ejecución en Tiempo Real:** Comunicación fluida con el backend para procesar scripts y mostrar resultados instantáneos.
+- **Panel de Salida Dinámico:** Visualización clara de errores de sintaxis, mensajes de ejecución y resultados de algoritmos.
+- **Biblioteca de Ejemplos:** Acceso rápido a algoritmos complejos como:
+  - Resolución de Sistemas de Ecuaciones Lineales (SEL).
+  - Normalización de matrices.
+  - Algoritmos de ordenamiento (Selección).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Instalación y Uso
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Asegúrate de tener instalado [Node.js](https://nodejs.org/) y [pnpm](https://pnpm.io/).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/tu-usuario/FRONT-NOTLIM.git
+   cd FRONT-NOTLIM
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+2. **Instalar dependencias:**
+   ```bash
+   pnpm install
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+3. **Configurar variables de entorno:**
+   Crea un archivo `.env` en la raíz del proyecto y añade la URL de tu backend:
+   ```env
+   VITE_URL=https://tu-api-backend.com
+   ```
+
+4. **Iniciar el servidor de desarrollo:**
+   ```bash
+   pnpm dev
+   ```
+
+## Origen e Inspiración
+
+Este proyecto es la interfaz oficial para el motor de interpretación definido en el repositorio **PROYECTO-SINTAXIS**. Proporciona una capa de usuario (UX) mejorada, permitiendo a los desarrolladores y estudiantes probar su lógica sin necesidad de configurar entornos locales complejos.
