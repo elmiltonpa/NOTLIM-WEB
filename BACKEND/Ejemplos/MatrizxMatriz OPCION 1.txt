@@ -1,0 +1,39 @@
+program MxM;
+def A:matriz[3][4];B:matriz[4][3];fila:real;columna:real;valor:real;D:matriz[3][3];
+
+{
+	fila := 1;
+	
+	escribir('Ingresando matriz 1 de 3x4');
+
+	while (?fila <= 3?) {
+		columna := 1;
+		while (?columna <=4?) {
+			escribir('Ingrese el valor de la matriz 1 para fila ',fila,' columna ',columna);
+			leer('',valor);
+			A[fila][columna]:=valor;
+			columna:=(columna + 1);
+		};
+		fila:=(fila+1);
+
+	};
+	fila:=1;
+
+	escribir('Ingresando matriz 2 de 4x3');
+
+	while (?fila <= 4?) {
+		columna := 1;
+		while (?columna <=3?) {
+			escribir('Ingrese el valor de la matriz 2 para fila ',fila,' columna ',columna);
+			leer('',valor);
+			B[fila][columna]:=valor;
+			columna:=(columna + 1);
+		};
+		fila:=(fila+1);
+
+	};
+	D := A  * B;
+	escribir('La matriz resultado es ',D);
+
+
+}

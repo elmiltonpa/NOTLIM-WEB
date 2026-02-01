@@ -1,0 +1,14 @@
+program MxM;
+def A:matriz[3][4];B:matriz[4][3];D:matriz[3][3];
+
+{
+	leer('Ingrese una matriz de 3x4',A);
+	
+	leer('Ingrese una matriz de 4x3', B);
+
+	D := A * B;
+
+	escribir(D);
+
+
+}
