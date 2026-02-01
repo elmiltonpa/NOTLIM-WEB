@@ -4,91 +4,14 @@ import { Ejecutar } from "./services";
 import { ejemplosCodigo } from "./examples";
 import type { Ejemplo } from "./examples";
 import CodeEditor from "./components/CodeEditor";
-
-const validarFuncionesLectura = (
-  codigo: string,
-): { valido: boolean; error?: string } => {
-  const patronesLectura = [/leer\s*\(/i];
-
-  for (const patron of patronesLectura) {
-    if (patron.test(codigo)) {
-      return {
-        valido: false,
-        error:
-          "Las funciones de entrada de usuario no están disponibles en el intérprete web. Por favor, use valores constantes en su lugar.",
-      };
-    }
-  }
-
-  return { valido: true };
-};
-
-const PlayIcon = () => (
-  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M8 5v14l11-7z" />
-  </svg>
-);
-
-const FileTextIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-    />
-  </svg>
-);
-
-const AlertCircleIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <line x1="12" y1="8" x2="12" y2="12" />
-    <line x1="12" y1="16" x2="12.01" y2="16" />
-  </svg>
-);
-
-const CheckCircleIcon = () => (
-  <svg
-    className="w-5 h-5"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
-  </svg>
-);
-
-const TrashIcon = () => (
-  <svg
-    className="w-4 h-4"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-    />
-  </svg>
-);
+import { validarFuncionesLectura } from "./utils/validators";
+import {
+  PlayIcon,
+  FileTextIcon,
+  AlertCircleIcon,
+  CheckCircleIcon,
+  TrashIcon,
+} from "./components/icons";
 
 export interface ResultadoEjecucion {
   exito: boolean;
@@ -150,15 +73,6 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Intérprete de Lenguaje
-          </h1>
-          <p className="text-gray-600">
-            Escribe y ejecuta programas en tu lenguaje personalizado
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="bg-white rounded-lg shadow-md">
             <div className="border-b border-gray-200 p-4">
