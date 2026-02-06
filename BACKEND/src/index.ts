@@ -5,7 +5,7 @@ import { ejecutarCodigo } from "./utils/ejecutador.js";
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '1mb' }));
 
 app.post('/ejecutar', async (req: Request, res: Response) => {
   try {
@@ -14,6 +14,15 @@ app.post('/ejecutar', async (req: Request, res: Response) => {
     if (!codigo || typeof codigo !== "string") {
       return res.status(400).json({
         error: "Código fuente requerido",
+      });
+    }
+
+    // Límite preventivo de líneas
+    const MAX_LINEAS = 5000;
+    const lineas = codigo.split('\n');
+    if (lineas.length > MAX_LINEAS) {
+      return res.status(400).json({
+        error: `El código es demasiado largo (Máximo ${MAX_LINEAS} líneas)`,
       });
     }
 

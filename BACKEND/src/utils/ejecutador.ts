@@ -17,7 +17,6 @@ export const ejecutarCodigo = async (
       elem: [],
     };
 
-    // Capturar salida de console.log
     const salida: string[] = [];
     const originalConsoleLog = console.log;
 
