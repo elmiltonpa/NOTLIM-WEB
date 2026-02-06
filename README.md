@@ -11,7 +11,7 @@
 
 ## Sobre el Proyecto
 
-**NOTLIM-WEB** es la evolución de un proyecto académico originalmente desarrollado en Pascal ([PROYECTO-SINTAXIS](https://github.com/elmiltonpa/PROYECTO-SINTAXIS)). La idea fue migrar un **compilador/intérprete completo** a **TypeScript** para poder ejecutar el lenguaje personalizado directamente desde una página web.
+**NOTLIM-WEB** es la evolución de un proyecto originalmente desarrollado en Pascal ([PROYECTO-SINTAXIS](https://github.com/elmiltonpa/PROYECTO-SINTAXIS)). La idea fue migrar un **compilador/intérprete completo** a **TypeScript** para poder ejecutar el lenguaje personalizado directamente desde una página web.
 
 El proyecto demuestra la implementación completa de un intérprete de lenguaje de programación, incluyendo:
 - Análisis léxico mediante **Autómatas Finitos Deterministas (AFD)**
